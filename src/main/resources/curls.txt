@@ -1,0 +1,22 @@
+# create user
+curl -i --location --request POST 'http://localhost:8080/user-dynamo/users' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "joao.sousa",
+    "email": "contato@jooaosousa.com",
+    "phoneNumber": "11999558844",
+    "cpf": "98141895885"
+}'
+
+# get user
+curl -i --location --request GET 'http://localhost:8080/user-dynamo/users/a5cb1792-d851-4b83-88be-2d6ab3dfc892'
+
+# update user
+curl -i --location --request PATCH 'http://localhost:8080/user-dynamo/users/a5cb1792-d851-4b83-88be-2d6ab3dfc892' \
+--header 'Content-Type: application/json' \
+--data-raw ' {
+    "phoneNumber": "+5511987542587"
+}'
+
+# delete user
+curl -i --location --request DELETE 'http://localhost:8080/user-dynamo/users/a5cb1792-d851-4b83-88be-2d6ab3dfc892'

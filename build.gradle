@@ -1,0 +1,63 @@
+buildscript {
+    ext {
+        mapstructVersion = '1.6.2'
+        testcontainers = '1.20.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.study.dynamo'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    //implementation 'org.springframework.data:spring-data-commons'
+   //implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+
+
+    // Aws 2.x
+    //implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.772'
+    implementation 'software.amazon.awssdk:dynamodb'
+    implementation 'software.amazon.awssdk:dynamodb-enhanced'
+    implementation("software.amazon.awssdk:sts")
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.testcontainers:testcontainers:${testcontainers}"
+    testImplementation "org.testcontainers:localstack:${testcontainers}"
+    testImplementation "org.testcontainers:junit-jupiter:${testcontainers}"
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'software.amazon.awssdk:bom:2.28.11'
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="UserDynamoDbApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="AWS_PROFILE" value="mfa" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.study.dynamo.UserDynamoDbApplication" />
+    <module name="user-dynamo-db.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.study.dynamo.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

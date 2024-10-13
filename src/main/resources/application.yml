@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  servlet:
+    context-path: '/user-dynamo/'
+
+spring:
+  application:
+    name:
+      user-dynamo-db
+
+
+aws:
+  region: us-east-1
+
+  dynamodb:
+    embedded: false
+    ddl-auto: update
+    url: https://dynamodb.us-east-1.amazonaws.com
